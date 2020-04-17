@@ -1,0 +1,13 @@
+{
+    "name": "tientran/tien-tran_php",
+    "authors": [
+        {
+            "name": "viettien1992",
+            "email": "viettien321992@gmail.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.7",
+        "doctrine/dbal": "^2.10"
+    }
+}
