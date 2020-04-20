@@ -3,7 +3,6 @@ require_once "./bootstrap.php";
 require_once "./entities/Book.php";
 $bookRepository = $entityManager->getRepository('Book');
 $Books = $bookRepository->findAll();
-
 ?>
 <form method="get" action="" >
     <table class="table table-bordered">
@@ -22,6 +21,7 @@ $Books = $bookRepository->findAll();
         <?php
 
         foreach ($Books as $Book) {
+            echo "oke";
             echo '
 							<tr>
 							    <td>
