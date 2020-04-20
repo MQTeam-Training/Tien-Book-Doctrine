@@ -43,15 +43,6 @@ $Books = $bookRepository->findAll();
 				                </td> 
 			                </tr>';
         }
-
-        if (isset($result) && mysqli_num_rows($result) > 0) {
-            // output data of each row
-            while ($row = mysqli_fetch_assoc($result)) {
-
-            }
-        } else {
-            echo "không có kết quả nào ";
-        }
         ?>
     </table>
     <input type="submit" name="submit-form" value="DELETE"/>
