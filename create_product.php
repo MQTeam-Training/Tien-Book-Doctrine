@@ -3,12 +3,10 @@
 require_once "bootstrap.php";
 require_once "./entities/User.php";
 
-$newUserName = "tientran";
-$newPassword = "1992";
+$newUserName = $argv[1];
+$newPassword = $argv[2];
 
-$user = new User();
-$user->setUser($newUserName);
-$user->setPass($newPassword);
+$user = new User($newUserName,$newPassword);
 
 $entityManager->persist($user);
 $entityManager->flush();

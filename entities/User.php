@@ -1,6 +1,6 @@
 <?php
 use Doctrine\ORM\Mapping as ORM;
-
+require_once "Book.php";
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
@@ -21,8 +21,11 @@ class User
      * @ORM\Column(type="string")
      */
     protected $password;
-
+    /** @Id @OneToOne(targetEntity="User") */
+    protected  $id_book;
     // .. (other code)
+
+
     public function getId()
     {
         return $this->id;
@@ -31,6 +34,23 @@ class User
     public function getUser()
     {
         return $this->user;
+
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdBook()
+    {
+        return $this->id_book;
+    }
+
+    /**
+     * @param mixed $id_book
+     */
+    public function setIdBook($id_book)
+    {
+        $this->id_book = $id_book;
 
     }
     public function getPass()
@@ -44,7 +64,18 @@ class User
     }
     public function setPass($password)
     {
-        $this->password =$password;
+        $this->password =md5($password);
 
     }
+    /**
+     * User constructor.
+     * @param $user
+     * @param $password
+     */
+    public function __construct($user, $password)
+    {
+        $this->setUser($user);
+        $this->setPass($password);
+    }
+
 }

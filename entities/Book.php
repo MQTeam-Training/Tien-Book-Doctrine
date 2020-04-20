@@ -21,9 +21,22 @@ class Book
      */
     protected $TacGia;
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     protected $NXB;
+
+    /**
+     * Book constructor.
+     * @param $Sach
+     * @param $TacGia
+     * @param $NXB
+     */
+    public function __construct($Sach, $TacGia, $NXB)
+    {
+        $this->Sach = $Sach;
+        $this->TacGia = $TacGia;
+        $this->NXB = $NXB;
+    }
 
     /**
      * @return mixed
@@ -86,7 +99,7 @@ class Book
      */
     public function setNXB($NXB): void
     {
-        $this->NXB = $NXB;
+        $this->NXB = $NXB(('d-m-Y H:i:s'));
     }
 
 }

@@ -2,5 +2,4 @@
 require_once "bootstrap.php";
 require_once "entities/User.php";
 
-require_once "login.php";
-echo "tientran";
+require_once "./view/vbook.php";
