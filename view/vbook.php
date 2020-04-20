@@ -5,6 +5,6 @@ $bookRepository = $entityManager->getRepository('Book');
 $Books = $bookRepository->findAll();
 
 foreach ($Books as $Book) {
-    echo sprintf("-%s\n", $Book->getSach()git);
+    echo sprintf("-%s\n", $Book->getSach());
 }
 ?>
