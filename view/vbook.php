@@ -21,7 +21,7 @@ $Books = $bookRepository->findAll();
         <?php
 
         foreach ($Books as $Book) {
-            echo "$Book->getId()";
+            echo sprintf("-%s\n", $Book->getId());
             echo '
 							<tr>
 							    <td>
