@@ -1,10 +1,10 @@
 <?php
 require_once "./bootstrap.php";
-require_once "../entities/Book.php";
-$productRepository = $entityManager->getRepository('Book');
-$Books = $productRepository->findAll();
+require_once "./entities/Book.php";
+$bookRepository = $entityManager->getRepository('Book');
+$Books = $bookRepository->findAll();
 
 foreach ($Books as $Book) {
-    echo sprintf("-%s\n", $Book->getSach());
+    echo sprintf("-%s\n", $Book->getSach()git);
 }
 ?>
