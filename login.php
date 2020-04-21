@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($Users== NULL){
         echo "đang nhâp lại";
     }else{
-        header("Location");
+        header("location: vbook.php");
     }
 }
 ?>

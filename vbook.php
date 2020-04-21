@@ -1,6 +1,8 @@
 <?php
-require_once "./bootstrap.php";
+require_once "bootstrap.php";
 require_once "./entities/Book.php";
+require_once "./entities/Author.php";
+require_once "./entities/User.php";
 $bookRepository = $entityManager->getRepository('Book');
 $Books = $bookRepository->findAll();
 ?>
@@ -32,9 +34,9 @@ $Books = $bookRepository->findAll();
                                 </div>
                                 </td>
 						        <td>' . $Book->getId(). '</td>
-				                <td>' . $Book->getSach() . '</td>
-				                <td>' . $Book->getTacGia(). '</td>
-				                <td>' . $Book->getNXB() ->format('d/m/Y'). '</td>
+				                <td>' . $Book->getName() . '</td>
+				                <td>' . $Book->getDescription(). '</td>
+				                <td>' . $Book->getPublishedDate() ->format('d/m/Y'). '</td>
 				                <td class="text-center">
 				                <a class="btn btn-info btn-xs" href="edit.php?id_Edit=' . $Book->getId() . '">
 				                <span class="glyphicon glyphicon-edit"></span> Edit</a>
