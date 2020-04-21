@@ -1,4 +1,24 @@
-<?php include ('head.php'); ?>
+<?php
+include ('head.php');
+require_once "bootstrap.php";
+require_once "./entities/User.php";
+
+session_start();
+// kiem tra phương thức sử dụng để truy cập trang
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $myusername = $_POST['username'];
+    $mypassword = $_POST['password'];
+//    $usernameValidator = v::alnum()->noWhitespace()->length(1, 6);
+//    $check=$usernameValidator->validate($mypassword);
+    $userRepository = $entityManager->getRepository('User');
+    $Users = $userRepository->findOneBy(array('password'=>$mypassword,'user'=>$myusername));
+    if($Users== NULL){
+        echo "đang nhâp lại";
+    }else{
+        header("Location");
+    }
+}
+?>
     <div id="login">
         <h3 class="text-center text-white pt-5">Login form</h3>
         <div class="container">

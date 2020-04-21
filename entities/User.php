@@ -21,11 +21,6 @@ class User
      * @ORM\Column(type="string")
      */
     protected $password;
-    /** @Id @OneToOne(targetEntity="User") */
-    protected  $id_book;
-    // .. (other code)
-
-
     public function getId()
     {
         return $this->id;
@@ -64,7 +59,7 @@ class User
     }
     public function setPass($password)
     {
-        $this->password =md5($password);
+        $this->password =$password;
 
     }
     /**

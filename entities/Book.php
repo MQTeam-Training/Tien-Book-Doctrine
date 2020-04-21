@@ -15,27 +15,45 @@ class Book
     /**
      * @ORM\Column(type="string")
      */
-    protected $Sach;
+    protected $name;
     /**
      * @ORM\Column(type="string")
      */
-    protected $TacGia;
+    protected $description;
     /**
      * @ORM\Column(type="datetime")
      */
-    protected $NXB;
+    protected $publishedDate;
+    /**
+     * @ORM\ManyToOne(targetEntity="Author")
+     */
+    protected $author;
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    protected $user;
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 
     /**
      * Book constructor.
-     * @param $Sach
-     * @param $TacGia
-     * @param $NXB
+     * @param $name
+     * @param $description
+     * @param $publishedDate
+     * @param $author
      */
-    public function __construct($Sach, $TacGia, $NXB)
+    public function __construct($name, $description, $publishedDate, $author)
     {
-        $this->Sach = $Sach;
-        $this->TacGia = $TacGia;
-        $this->NXB = $NXB;
+        $this->name = $name;
+        $this->description = $description;
+        $this->publishedDate = $publishedDate;
+        $this->author = $author;
     }
 
     /**
@@ -47,59 +65,36 @@ class Book
     }
 
     /**
-     * @param mixed $id
+     * @return mixed
      */
-    public function setId($id): void
+    public function getName()
     {
-        $this->id = $id;
+        return $this->name;
     }
 
     /**
      * @return mixed
      */
-    public function getSach()
+    public function getDescription()
     {
-        return $this->Sach;
-    }
-
-    /**
-     * @param mixed $Sach
-     */
-    public function setSach($Sach): void
-    {
-        $this->Sach = $Sach;
+        return $this->description;
     }
 
     /**
      * @return mixed
      */
-    public function getTacGia()
+    public function getPublishedDate()
     {
-        return $this->TacGia;
-    }
-
-    /**
-     * @param mixed $TacGia
-     */
-    public function setTacGia($TacGia): void
-    {
-        $this->TacGia = $TacGia;
+        return $this->publishedDate;
     }
 
     /**
      * @return mixed
      */
-    public function getNXB()
+    public function getAuthor()
     {
-        return $this->NXB;
+        return $this->author;
     }
 
-    /**
-     * @param mixed $NXB
-     */
-    public function setNXB($NXB): void
-    {
-        $this->NXB = $NXB(('d-m-Y H:i:s'));
-    }
 
 }
