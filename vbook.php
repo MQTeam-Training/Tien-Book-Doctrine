@@ -1,4 +1,5 @@
 <?php
+include ('head.php');
 require_once "bootstrap.php";
 require_once "./entities/Book.php";
 require_once "./entities/Author.php";
@@ -49,3 +50,4 @@ $Books = $bookRepository->findAll();
     </table>
     <input type="submit" name="submit-form" value="DELETE"/>
 </form>
+<?php include ('footer.php'); ?>
