@@ -18,7 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "đang nhâp lại";
     }else{
         $user_id=$Users->getId();
-        header("location: vbook.php?user_id=$user_id");
+        setcookie("user_id", $user_id, time() + 3600, "/", "", 0);
+        if (isset($_GET['tientran'])) {
+            header("Location: $_GET[tientran]");
+        }
+        else {
+            header("Location: vbook.php");
+        }
     }
 }
 ?>

@@ -4,12 +4,19 @@ require_once "bootstrap.php";
 require_once "./entities/Book.php";
 require_once "./entities/Author.php";
 require_once "./entities/User.php";
-
+if(isset($_COOKIE['user_id'])){
+    $userRepository = $entityManager->getRepository('User');
+    $id_user=$userRepository->find($_COOKIE['user_id']);
+    $Books=$id_user->getUserthebook();
+}else{
+    $url=$_SERVER['SCRIPT_NAME'];
+    header("Location: login.php?tientran=$url");
+    echo "tientran";
+}
 //$productRepository = $entityManager->getRepository('Book');
 //$Books = $productRepository->findBy(['author_id' => '2']);
-$userRepository = $entityManager->getRepository('User');
-$id_user=$userRepository->find($_GET['user_id']);
-$Books=$id_user->getUserthebook();
+
+
 ?>
     <form method="get">
         Mô Tả: <input type="text" name="mota"/>
