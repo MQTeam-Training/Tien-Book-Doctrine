@@ -4,9 +4,20 @@ require_once "bootstrap.php";
 require_once "./entities/Book.php";
 require_once "./entities/Author.php";
 require_once "./entities/User.php";
-$bookRepository = $entityManager->getRepository('Book');
-$Books = $bookRepository->findAll();
+
+//$productRepository = $entityManager->getRepository('Book');
+//$Books = $productRepository->findBy(['author_id' => '2']);
+$userRepository = $entityManager->getRepository('User');
+$id_user=$userRepository->find($_GET['user_id']);
+$Books=$id_user->getUserthebook();
 ?>
+    <form method="get">
+        Mô Tả: <input type="text" name="mota"/>
+        Tên Sach : <input type="text" name="nameSach"/>
+        Ngày Xuất Bản : <input type="date" data-date="" data-date-format="YYYY MMMM DD" name="StarTime">
+        <input type="date" data-date-format="YYYY MMMM DD" name="TimeEnd">
+        <input type="submit" name="btnSubmit" value="search"/>
+    </form>
 <form method="get" action="" >
     <table class="table table-bordered">
         <thead class="thead-dark">
@@ -16,7 +27,7 @@ $Books = $bookRepository->findAll();
             <th scope="col"></th>
             <th scope="col">id</th>
             <th scope="col">TenSach</th>
-            <th scope="col">TacGia</th>
+            <th scope="col">MoTa</th>
             <th scope="col">Nxb</th>
             <th scope="col" class="text-center">Action</th>
         </tr>
@@ -48,6 +59,6 @@ $Books = $bookRepository->findAll();
         }
         ?>
     </table>
-    <input type="submit" name="submit-form" value="DELETE"/>
+<!--    <input type="submit" name="submit-form" value="DELETE"/>-->
 </form>
 <?php include ('footer.php'); ?>

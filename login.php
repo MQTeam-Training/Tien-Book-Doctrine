@@ -1,6 +1,8 @@
 <?php
 include ('head.php');
 require_once "bootstrap.php";
+require_once "./entities/Book.php";
+require_once "./entities/Author.php";
 require_once "./entities/User.php";
 
 session_start();
@@ -11,11 +13,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //    $usernameValidator = v::alnum()->noWhitespace()->length(1, 6);
 //    $check=$usernameValidator->validate($mypassword);
     $userRepository = $entityManager->getRepository('User');
-    $Users = $userRepository->findOneBy(array('password'=>$mypassword,'user'=>$myusername));
+    $Users = $userRepository->findOneBy(array('password'=>$mypassword,'username'=>$myusername));
     if($Users== NULL){
         echo "đang nhâp lại";
     }else{
-        header("location: vbook.php");
+        $user_id=$Users->getId();
+        header("location: vbook.php?user_id=$user_id");
     }
 }
 ?>

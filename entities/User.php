@@ -1,6 +1,7 @@
 <?php
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-require_once "Book.php";
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
@@ -16,7 +17,7 @@ class User
     /**
      * @ORM\Column(type="string")
      */
-    protected $user;
+    protected $username;
     /**
      * @ORM\Column(type="string")
      */
@@ -26,9 +27,9 @@ class User
         return $this->id;
     }
 
-    public function getUser()
+    public function getUsername()
     {
-        return $this->user;
+        return $this->username;
 
     }
 
@@ -52,9 +53,9 @@ class User
     {
         return $this->password;
     }
-    public function setUser($user)
+    public function setUsername($username)
     {
-        $this->user = $user;
+        $this->username = $username;
 
     }
     public function setPass($password)
@@ -62,6 +63,30 @@ class User
         $this->password =$password;
 
     }
+
+    /**
+     * Boook class
+     * user tên truong khai bao bên Book
+     * @ORM\OneToMany(targetEntity="Book", mappedBy="user")
+     */
+    protected $userthebook = null;
+
+    /**
+     * @return null
+     */
+    public function getUserthebook()
+    {
+        return $this->userthebook;
+    }
+
+    /**
+     * @param null $userthebook
+     */
+    public function setUserthebook($userthebook): void
+    {
+        $this->userthebook = $userthebook;
+    }
+
     /**
      * User constructor.
      * @param $user
@@ -71,6 +96,7 @@ class User
     {
         $this->setUser($user);
         $this->setPass($password);
+        $this->userthebook = new ArrayCollection();
     }
 
 }
