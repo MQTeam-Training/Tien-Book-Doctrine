@@ -1,24 +1,26 @@
 <?php
-include ('head.php');
+include('head.php');
 require_once "bootstrap.php";
 require_once "./entities/Book.php";
 require_once "./entities/Author.php";
 require_once "./entities/User.php";
-
 if(isset($_COOKIE['user_id'])){
-    $userRepository = $entityManager->getRepository('User');
-    $id_user=$userRepository->find($_COOKIE['user_id']);
-    $Books=$id_user->getUserthebook();
+    $userRepository = $entityManager->getRepository('Book');
+    $Books=$userRepository->findAll();
 }else{
     $url=$_SERVER['SCRIPT_NAME'];
     header("Location: login.php?tientran=$url");
 }
-//$productRepository = $entityManager->getRepository('Book');
-//$Books = $productRepository->findBy(['author_id' => '2']);
-
 
 ?>
-    <form method="get" action="" >
+<form method="get">
+    Mô Tả: <input type="text" name="moTa"/>
+    Tên Sach : <input type="text" name="nameSach"/>
+    Ngày Xuất Bản : <input type="date" data-date="" data-date-format="YYYY MMMM DD" name="StarTime">
+    <input type="date" data-date-format="YYYY MMMM DD" name="TimeEnd">
+    <input type="submit" name="btnSubmit" value="search"/>
+</form>
+<form method="get" action="" >
     <table class="table table-bordered">
         <thead class="thead-dark">
         <thead class="thead-dark">
@@ -59,6 +61,4 @@ if(isset($_COOKIE['user_id'])){
         }
         ?>
     </table>
-<!--    <input type="submit" name="submit-form" value="DELETE"/>-->
-</form>
 <?php include ('footer.php'); ?>
