@@ -34,26 +34,75 @@ class Book
     protected $user;
 
     /**
+     * @param mixed $description
+     */
+    public function setDescription($description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @param mixed $publishedDate
+     */
+    public function setPublishedDate($publishedDate): void
+    {
+        $this->publishedDate =$publishedDate;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author): void
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
+
+    /**
      * @return mixed
      */
     public function getUser()
     {
         return $this->user;
     }
-
     /**
      * Book constructor.
      * @param $name
      * @param $description
      * @param $publishedDate
      * @param $author
+     * @param $user
      */
-    public function __construct($name, $description, $publishedDate, $author)
+    public function __construct($name, $description, $publishedDate, $author,$user)
     {
         $this->name = $name;
         $this->description = $description;
         $this->publishedDate = $publishedDate;
         $this->author = $author;
+        $this->user = $user;
     }
 
     /**
@@ -79,7 +128,6 @@ class Book
     {
         return $this->description;
     }
-
     /**
      * @return mixed
      */

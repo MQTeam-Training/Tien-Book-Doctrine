@@ -4,6 +4,7 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 //use Doctrine\DBAL\Logging\EchoSQLLogger;
 require_once "vendor/autoload.php";
+use Doctrine\DBAL\DriverManager;
 
 // Create a simple "default" Doctrine ORM configuration for Annotations
 $isDevMode = true;
@@ -27,3 +28,4 @@ $conn = array(
 
 // obtaining the entity manager
 $entityManager = EntityManager::create($conn, $config);
+$conn1 = DriverManager::getConnection($conn);
